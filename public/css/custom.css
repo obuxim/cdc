@@ -1,0 +1,11 @@
+* {
+    font-family: "Montserrat", sans-serif;
+    text-rendering: optimizeLegibility;
+}
+/*
+    Header Starts
+ */
+#header-nav .nav-item {
+    display: flex;
+    align-items: center;
+}
