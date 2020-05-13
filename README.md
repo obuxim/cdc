@@ -1,6 +1,8 @@
 # Laundry Management System
 Laundry Management System for Calcutta Dry Cleaners
 
+[Check current live link](https://homeserver.zubairhasan.com/cdc)
+
 ## Customer Segment
 ### Pages
 - Homepage
