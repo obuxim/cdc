@@ -25,8 +25,10 @@ Route::prefix('admin')->middleware('isAdmin')->group(function(){
     Route::prefix('categories')->group(function(){
         Route::get('/', 'CategoriesController@index')->name('admin.category.index');
         Route::get('/new', 'CategoriesController@create')->name('admin.category.create');
+        Route::post('/new', 'CategoriesController@store')->name('admin.category.store');
         Route::get('/show/{id}', 'CategoriesController@show')->name('admin.category.show');
         Route::get('/edit/{id}', 'CategoriesController@edit')->name('admin.category.edit');
+        Route::post('/edit/{id}', 'CategoriesController@update')->name('admin.category.update');
         Route::get('/delete/{id}', 'CategoriesController@destroy')->name('admin.category.destroy');
     });
 });
