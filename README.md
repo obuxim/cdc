@@ -19,14 +19,15 @@ Laundry Management System for Calcutta Dry Cleaners
 ## Admin Segment
 ### Pages
 - Dashboard
-- Category
-  - List
-  - Add
-  - Edit
-- Service
-  - List
-  - Add
-  - Edit
+- ~~Service~~
+  - ~~List~~
+  - ~~Add~~
+  - ~~Edit~~
+- ~~Item~~
+  - ~~List~~
+  - ~~Show~~
+  - ~~Add~~
+  - ~~Edit~~
 - Customer
   - List
   - Add

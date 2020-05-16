@@ -11,5 +11,6 @@
 @include('sections.navbar')
 @yield('content')
 @include('includes.foot')
+@yield('additional-foot')
 </body>
 </html>

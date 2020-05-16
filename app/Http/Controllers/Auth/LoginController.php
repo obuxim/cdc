@@ -48,10 +48,13 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             // Authentication passed...
             $previousURL = Session::pull('previousURL');
-            if($previousURL == '/login' || empty($previousURL)){
-                return redirect(RouteServiceProvider::HOME);
+            if(Auth::user()->role == 'admin'){
+                return redirect()->route('admin.dashboard');
+            }else if($previousURL == '/login' || empty($previousURL)){
+                return redirect()->intended(RouteServiceProvider::HOME);
+            }else {
+                return redirect()->intended($previousURL);
             }
-            return redirect()->intended($previousURL);
         } else {
             return redirect(route('login'))->with('error', "Invalid credentials!");
         }

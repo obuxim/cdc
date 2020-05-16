@@ -1,6 +1,15 @@
-<nav id="header-nav" class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-        <a class="navbar-brand" href="/">{{ config('app.name', 'CDC') }}</a>
+<nav id="header-nav" class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+    <div class="container-fluid">
+        @auth
+            @if(auth()->user()->role == 'admin')
+                <a href="{{ route('admin.dashboard') }}" class="navbar-brand">{{ config('app.name', 'CDC') }}</a>
+            @else
+                <a href="/" class="navbar-brand">{{ config('app.name', 'CDC') }}</a>
+            @endif
+        @endauth
+        @guest
+            <a href="/" class="navbar-brand">{{ config('app.name', 'CDC') }}</a>
+        @endguest
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsiveMenu" aria-controls="responsiveMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -9,8 +18,23 @@
             <ul class="navbar-nav mr-auto">
                 @auth
                     @if(Auth::user()->role  == 'admin')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.category.index') }}">Category</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Service
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+                                <a class="dropdown-item" href="{{ route('admin.category.index') }}">All Services</a>
+                                <a class="dropdown-item" href="{{ route('admin.category.create') }}">Add Service</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="serviceDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Item
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="serviceDropdown">
+                                <a class="dropdown-item" href="{{ route('admin.service.index') }}">All Items</a>
+                                <a class="dropdown-item" href="{{ route('admin.service.create') }}">Add Item</a>
+                            </div>
                         </li>
                     @endif
                 @endauth

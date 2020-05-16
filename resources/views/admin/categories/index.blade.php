@@ -1,18 +1,40 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Categories</div>
+            <div class="col-md-12">
+                <div class="card shadow">
+                    <div class="card-header text-center"><strong>Services</strong></div>
 
                     <div class="card-body">
+                        @include('includes.messages')
                         @if(count($categories) > 0)
                         @foreach($categories as $category)
-                            <h3>$category->title</h3>
+                            @if(!$loop->last)
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h5>{{ $category->title }}</h5>
+                                    </div>
+                                    <div>
+                                        <a href="{{ route('admin.category.edit', $category->id) }}"><i class="fas fa-2x fa-edit text-primary"></i></a>
+                                        <a href="{{ route('admin.category.destroy', $category->id) }}"><i class="fas fa-2x fa-trash text-danger"></i></a>
+                                    </div>
+                                </div>
+                                <hr>
+                            @else
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h5>{{ $category->title }}</h5>
+                                    </div>
+                                    <div>
+                                        <a href="{{ route('admin.category.edit', $category->id) }}"><i class="fas fa-2x fa-edit text-primary"></i></a>
+                                        <a href="{{ route('admin.category.destroy', $category->id) }}"><i class="fas fa-2x fa-trash text-danger"></i></a>
+                                    </div>
+                                </div>
+                            @endif
                         @endforeach
                         @else
-                            <p>No categories found!</p>
+                            <p class="text-center">No services found!</p>
                         @endif
                     </div>
                 </div>
