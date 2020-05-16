@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container-fluid mt-5">
+    <div class="container-fluid my-5">
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="card shadow">
-                    <div class="card-header">Edit Service</div>
+                    <div class="card-header text-center"><strong>Edit Service</strong></div>
 
                     <div class="card-body">
                         @include('includes.errors')

@@ -8,6 +8,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
+                    @include('includes.messages')
                     <form method="POST" action="{{ Auth::logout() }}">
                         @csrf
 

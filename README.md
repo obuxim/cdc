@@ -28,10 +28,10 @@ Laundry Management System for Calcutta Dry Cleaners
   - ~~Show~~
   - ~~Add~~
   - ~~Edit~~
-- Customer
-  - List
-  - Add
-  - Edit
+- ~~Customer~~
+  - ~~List~~
+  - ~~Add~~
+  - ~~Edit~~
 - Order
   - List
   - Add

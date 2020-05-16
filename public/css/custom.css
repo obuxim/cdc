@@ -9,3 +9,10 @@
     display: flex;
     align-items: center;
 }
+
+/*
+    Profile Page
+ */
+#editProfileToggle{
+    cursor: pointer;
+}

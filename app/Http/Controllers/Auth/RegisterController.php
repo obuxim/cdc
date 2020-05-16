@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Profile;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -23,6 +24,19 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+
+    function get_gravatar( $email, $s = 250, $d = 'mp', $r = 'g', $img = false, $atts = array() ) {
+        $url = 'https://www.gravatar.com/avatar/';
+        $url .= md5( strtolower( trim( $email ) ) );
+        $url .= "?s=$s&d=$d&r=$r";
+        if ( $img ) {
+            $url = '<img src="' . $url . '"';
+            foreach ( $atts as $key => $val )
+                $url .= ' ' . $key . '="' . $val . '"';
+            $url .= ' />';
+        }
+        return $url;
+    }
 
     /**
      * Where to redirect users after registration.
@@ -50,7 +64,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'firstName' => ['required', 'string', 'max:255'],
+            'lastName' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -64,10 +79,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        /* Commenting default create method.
         return User::create([
-            'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        */
+        $user = new User();
+        $profile = new Profile();
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
+        $user->save();
+        $profile->firstName = $data['firstName'];
+        $profile->lastName = $data['lastName'];
+        $profile->gravatarURL = $this->get_gravatar($user->email);
+        $user->profile()->save($profile);
+        return $user;
     }
 }

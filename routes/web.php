@@ -19,6 +19,9 @@ Route::get('/', function () {
 
 
 Auth::routes();
+//Profile Route
+Route::get('/profile','ProfileController@index')->middleware('auth')->name('user.profile');
+Route::post('/profile','ProfileController@update')->middleware('auth')->name('user.profile.update');
 // Admin Routes
 Route::prefix('admin')->middleware('isAdmin')->group(function(){
     Route::get('/', 'PagesController@admin')->name('admin.dashboard');
@@ -41,5 +44,15 @@ Route::prefix('admin')->middleware('isAdmin')->group(function(){
         Route::get('/edit/{id}', 'ServicesController@edit')->name('admin.service.edit');
         Route::post('/edit/{id}', 'ServicesController@update')->name('admin.service.update');
         Route::get('/delete/{id}', 'ServicesController@destroy')->name('admin.service.destroy');
+    });
+    // Customers Route
+    Route::prefix('customers')->group(function(){
+        Route::get('/', 'CustomersController@index')->name('admin.customer.index');
+        Route::get('/new', 'CustomersController@create')->name('admin.customer.create');
+        Route::post('/new', 'CustomersController@store')->name('admin.customer.store');
+        Route::get('/show/{id}', 'CustomersController@show')->name('admin.customer.show');
+        Route::get('/edit/{id}', 'CustomersController@edit')->name('admin.customer.edit');
+        Route::post('/edit/{id}', 'CustomersController@update')->name('admin.customer.update');
+        Route::get('/delete/{id}', 'CustomersController@destroy')->name('admin.customer.destroy');
     });
 });

@@ -36,13 +36,22 @@
                                 <a class="dropdown-item" href="{{ route('admin.service.create') }}">Add Item</a>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="customerDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Customer
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="customerDropdown">
+                                <a class="dropdown-item" href="{{ route('admin.customer.index') }}">All Customers</a>
+                                <a class="dropdown-item" href="{{ route('admin.customer.create') }}">Add Customer</a>
+                            </div>
+                        </li>
                     @endif
                 @endauth
             </ul>
             <ul class="navbar-nav ml-auto">
                 @auth
                     <li class="nav-item">
-                        <a href="/profile" class="nav-link"><i class="fas fa-user rounded-circle fa-border p-2"></i> {{ Auth::user()->name }}</a>
+                        <a href="{{ route('user.profile') }}" class="nav-link"><i class="fas fa-user rounded-circle fa-border p-2 mr-1"></i>  {{ Auth::user()->profile->firstName }}</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()" class="nav-link">Logout</a>

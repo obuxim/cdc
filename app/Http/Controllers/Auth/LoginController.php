@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -43,6 +44,11 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        $validator = Validator::make($request->all(), array(
+            'email' => 'required|email',
+            'password' => 'required'
+        ));
+
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -52,11 +58,12 @@ class LoginController extends Controller
                 return redirect()->route('admin.dashboard');
             }else if($previousURL == '/login' || empty($previousURL)){
                 return redirect()->intended(RouteServiceProvider::HOME);
-            }else {
-                return redirect()->intended($previousURL);
             }
+                return redirect()->intended($previousURL);
+
         } else {
-            return redirect(route('login'))->with('error', "Invalid credentials!");
+            $validator->errors()->add('invalid_login', 'Invalid credentials!');
+            return redirect(route('login'))->withErrors($validator)->withInput();
         }
     }
 }
