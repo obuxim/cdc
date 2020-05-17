@@ -55,4 +55,25 @@ Route::prefix('admin')->middleware('isAdmin')->group(function(){
         Route::post('/edit/{id}', 'CustomersController@update')->name('admin.customer.update');
         Route::get('/delete/{id}', 'CustomersController@destroy')->name('admin.customer.destroy');
     });
+    // Order Status Route
+    Route::prefix('orderstatuses')->group(function(){
+        Route::get('/', 'OrderstatusesController@index')->name('admin.orderstatus.index');
+        Route::get('/new', 'OrderstatusesController@create')->name('admin.orderstatus.create');
+        Route::post('/new', 'OrderstatusesController@store')->name('admin.orderstatus.store');
+        Route::get('/show/{id}', 'OrderstatusesController@show')->name('admin.orderstatus.show');
+        Route::get('/edit/{id}', 'OrderstatusesController@edit')->name('admin.orderstatus.edit');
+        Route::get('/makedefault/{id}', 'OrderstatusesController@makedefault')->name('admin.orderstatus.makedefault');
+        Route::post('/edit/{id}', 'OrderstatusesController@update')->name('admin.orderstatus.update');
+        Route::get('/delete/{id}', 'OrderstatusesController@destroy')->name('admin.orderstatus.destroy');
+    });
+    // Orders Route
+    Route::prefix('orders')->group(function(){
+        Route::get('/', 'OrdersController@index')->name('admin.order.index');
+        Route::get('/new', 'OrdersController@create')->name('admin.order.create');
+        Route::post('/new', 'OrdersController@store')->name('admin.order.store');
+        Route::get('/show/{id}', 'OrdersController@show')->name('admin.order.show');
+        Route::get('/edit/{id}', 'OrdersController@edit')->name('admin.order.edit');
+        Route::post('/edit/{id}', 'OrdersController@update')->name('admin.order.update');
+        Route::get('/delete/{id}', 'OrdersController@destroy')->name('admin.order.destroy');
+    });
 });
