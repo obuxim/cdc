@@ -2,9 +2,6 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\User;
-use Faker\Generator as Faker;
-use Illuminate\Support\Str;
 use App\Profile;
 
 /*
@@ -18,11 +15,9 @@ use App\Profile;
 |
 */
 
-$factory->define(User::class, function () {
+$factory->define(Profile::class, function () {
     return [
-        'email' => 'rahad@octoriz.com',
-        'password' => Hash::make('@octopass'), // password
-        'role' => 'admin',
-        'remember_token' => Str::random(10),
+        'firstName' => 'Rahad',
+        'lastName' => 'Shaikh', // password
     ];
 });

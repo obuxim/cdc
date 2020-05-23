@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid my-5">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-12 col-md-10 mx-auto">
                 <div class="card shadow">
                     <div class="card-header text-center"><strong>Item Details</strong></div>
 

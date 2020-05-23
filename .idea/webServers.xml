@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ccb41be6-5212-44b1-9e05-ad48f85c5196" name="homeserver.zubairhasan.com:8000" url="http://homeserver.zubairhasan.com:8000">
+        <fileTransfer rootFolder="/home/zubo/deployed_apps/cdc" accessType="SFTP" host="homeserver.zubairhasan.com" port="22" sshConfigId="479e90fc-0903-4b63-9a69-daf64b583d4b" sshConfig="zubo@homeserver.zubairhasan.com:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

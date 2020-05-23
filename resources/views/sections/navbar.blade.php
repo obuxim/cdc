@@ -54,6 +54,15 @@
                                 <a class="dropdown-item" href="{{ route('admin.orderstatus.create') }}">Add Order Status</a>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="orderDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Order
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="orderDropdown">
+                                <a class="dropdown-item" href="{{ route('admin.order.index') }}">All Orders</a>
+                                <a class="dropdown-item" href="{{ route('admin.order.create') }}">Add Order</a>
+                            </div>
+                        </li>
                     @endif
                 @endauth
             </ul>

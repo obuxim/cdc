@@ -15,6 +15,6 @@ class Order extends Model
     // Has Status
     public function status()
     {
-        return $this->hasOne(Orderstatus::class);
+        return $this->belongsTo(Orderstatus::class);
     }
 }

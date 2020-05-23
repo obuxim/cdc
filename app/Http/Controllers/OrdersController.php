@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Order;
+use App\User;
 
 class OrdersController extends Controller
 {
@@ -13,7 +17,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -23,7 +27,8 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        //
+        $customers = User::where('role', 'customer')->get();
+        return view('admin.orders.create')->with('customers', $customers);
     }
 
     /**
